@@ -13,10 +13,7 @@ $this->title = 'Контакты';
 ?>
 
 <style>
-.site-contact{
 
-    }
-	
 	.child {  
     padding: 10px;
     float: left;
@@ -82,7 +79,6 @@ $this->title = 'Контакты';
 		<div>
 		<p>+380 44 461-88-01</p>
 		<p>+380 44 461-88-04</p>
-		<p>+380 44 461-88-06</p>
 		</div>
 		</div>
 
@@ -91,9 +87,8 @@ $this->title = 'Контакты';
 		<div >
 		<i class="fa fa-map-marker fa-3x child" aria-hidden="true"></i>
 		<div>
-		<p>ул. Багрицкого, 23, 45453,</p>
+		<p>ул. Багрицкого, 23,</p>
 		<p>45453, Одесса,</p>
-		<p>Украина</p>
 		</div>
 		</div>
 
@@ -110,7 +105,7 @@ $this->title = 'Контакты';
 	</div>
 	
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br>
+    <br><br><br>
 	<h3>Если Вам стало известно о фактах:</h3>
 	
 	<ul class="push">

@@ -57,28 +57,24 @@ $this->title = 'AgroProm';
         align-items: flex-end;
         padding: 50px;
     }
-    .col-lg-6{
+    .hue{
         width: 350px;
-        height: 500px;
+        height: 520px;
 
-        padding: 25px;
-        margin: 20px;
+        padding: 15px;
+        margin: 10px;
+        position:relative;
+    }
+    .hell{
+        position:absolute;
+        width: 90%;
+        bottom:0;
     }
     .hell>span {
-        float: left;
-        width: 40%;
-
+        float: right;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-    }
-    .hell>span:last-child {
-        width: 12%;
-        float:right;
-    }
-    .hell>span:last-child
-    {
-        float:right;
     }
 
 </style>
@@ -128,9 +124,9 @@ $this->title = 'AgroProm';
     <br>
 
 
-        <div class="container" style=" ">
-            <div class="row text-left" style=" ">
-                <div style="border: 1px solid grey; " class="col-xs-12 col-lg-4">
+        <div class="container-fluid">
+            <div class="row justify-content-center" >
+                <div style="border: 1px solid grey; " class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/mc/8733.jpg" alt="" class="w-100">
 
@@ -138,9 +134,9 @@ $this->title = 'AgroProm';
                         19 марта 2020
                     </div>
 
-                    <h4 style="">
+                    <h5 style="">
                         AgroProm готовит к вводу в эксплуатацию дополнительные мощности в Голой Пристани
-                    </h4>
+                    </h5>
 
                     <div class="text">Благодаря строительству трех дополнительных емкостей сегодня мощности филиала «Голопристанская» (Херсонская обл.) Увеличено до 97,9 тыс. Единовременного хранения сельскохозяйственной продукции.</div>
                     <br>
@@ -152,7 +148,7 @@ $this->title = 'AgroProm';
 
 
 
-                <div style="border: 1px solid grey;" class="col-xs-12 col-lg-4">
+                <div style="border: 1px solid grey;" class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/mc/8731.jpg" alt="" class="w-100">
 
@@ -160,9 +156,9 @@ $this->title = 'AgroProm';
                         22 августа 2020
                     </div>
 
-                    <h4 style="">
+                    <h5 style="">
                         AgroProm, несмотря на короновирус, запустил новый терминал
-                    </h4>
+                    </h5>
 
                     <div class="text">Лидер аграрного рынка Украины компания AgroProm инвестировала 23 млн долл. США в строительство нового перегрузочного терминала в с. Марьянское Апостоловского района Днепропетровской области. Это уже 10-й такой ...</div>
 					<br>
@@ -174,11 +170,7 @@ $this->title = 'AgroProm';
 
 
 
-                <div class="w-100"></div>
-
-
-
-                <div style=" border: 1px solid grey;" class="col-xs-12 col-lg-4">
+                <div style=" border: 1px solid grey;" class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/g/6033/23266.jpg" alt="" class="w-100">
 
@@ -186,9 +178,9 @@ $this->title = 'AgroProm';
                         2 сентября 2020
                     </div>
 
-                    <h4 style="">
+                    <h5 style="">
                         Первый год работы гиганта NIBULON MAX
-                    </h4>
+                    </h5>
 
                     <div class="text">Всего за год самоходный плавучий кран проекту П-140 NIBULON MAX отгрузил на экспорт 2500000 тонн сельхозпродукции.  Марьянское Апостоловского района Днепропетровской области. Единовременного хранения сельскохозяйственной продукции.</div>
 					<br>

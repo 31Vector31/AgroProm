@@ -88,7 +88,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container" style="padding:20px; margin: 20px;">
+    <div class="container" style="padding-top: 20px;">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -97,27 +97,46 @@ AppAsset::register($this);
     </div>
 </div>
 
+<footer class="bg-light text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h6 class="text-uppercase"><i class="fa fa-phone" aria-hidden="true"></i>  +38 (0512) 37-23-44</h6>
 
 
+            </div>
+            <!--Grid column-->
 
-<footer class="footer">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h6 class="text-uppercase mb-0"><i class="fa fa-map-marker" aria-hidden="true"></i> ул. Барицкого, 23, 45453, Одесса</h6>
 
-        <span style="margin-left:150px;">
-	&copy; Server <?= date('Y') ?>
-	</span>
 
-    <span style="margin-left:60px;">
-	<i class="fa fa-phone" aria-hidden="true"></i>  +38 (0512) 37-23-44
-	</span>
+            </div>
+            <!--Grid column-->
 
-    <span style="margin-left:60px;">
-	<i class="fa fa-map-marker" aria-hidden="true"></i> ул. Барицкого, 23, 45453, Одесса, Украина
-	</span>
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h6 class="text-uppercase"><a href="mailto:info@example.com"><i class="fa fa-envelope" aria-hidden="true"></i>  info@example.com</a></h6>
 
-    <span style="margin-left:60px;">
-	<a href="mailto:info@example.com"><i class="fa fa-envelope" aria-hidden="true"></i>  info@example.com</a>
-	</span>
 
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © <?/*= date('Y') */?> Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">Server</a>
+    </div>
+    <!-- Copyright -->
 </footer>
 
 
