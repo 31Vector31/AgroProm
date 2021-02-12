@@ -7,7 +7,7 @@ $this->title = 'AgroProm';
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrap4cdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 <style>
 
     * {
@@ -125,17 +125,6 @@ $this->title = 'AgroProm';
         </div>
     </section>
 
-    <br>
-    <button type="button" class="btn btn-primary">Главный</button>
-    <button type="button" class="btn btn-secondary">Вторичный</button>
-    <button type="button" class="btn btn-success">Успех</button>
-    <button type="button" class="btn btn-danger">Опасность</button>
-    <button type="button" class="btn btn-warning">Предупреждение</button>
-    <button type="button" class="btn btn-info">Инфо</button>
-    <button type="button" class="btn btn-light">Светлый</button>
-    <button type="button" class="btn btn-dark">Темный</button>
-
-    <button type="button" class="btn btn-link">Линк</button>
     <br>
 
 
