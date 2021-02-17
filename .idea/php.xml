@@ -91,6 +91,11 @@
       <path value="$PROJECT_DIR$/basic/vendor/bower-asset/bootstrap" />
       <path value="$PROJECT_DIR$/basic/vendor/fortawesome/font-awesome" />
       <path value="$PROJECT_DIR$/basic/vendor/rmrevin/yii2-fontawesome" />
+      <path value="$PROJECT_DIR$/basic/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/basic/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/basic/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/basic/vendor/electrolinux/phpquery" />
+      <path value="$PROJECT_DIR$/basic/vendor/scotthuangzl/yii2-google-chart" />
     </include_path>
   </component>
 </project>

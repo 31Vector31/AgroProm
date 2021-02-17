@@ -4,7 +4,8 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-
+use scotthuangzl\googlechart\GoogleChart;
+use yii\bootstrap4\Dropdown;
 $this->title = 'Продукция переработки сои';
 
 
@@ -34,6 +35,28 @@ $this->title = 'Продукция переработки сои';
     На предприятии установлено оборудование ведущих производителей, которое сертифицировано в соответствии с международными стандартами. Кроме того, на предприятии предусмотрены мощные системы очистки воды и воздуха.</p>
     <p>В начале 2016 Глобинский завод переработки сои успешно прошел комплексную сертификацию по международным стандартам ISO 9001, ISO 14001, OHSAS 18001 и схемой сертификации FSSC 22000 для пищевой и кормовой продукции. В 2017 году прошла сертификация завода по международному стандарту ISO 50001 по энергетическому менеджменту, а в 2018 году сертификация по стандарту по безопасности кормов GMP + B2.</p>
     <p>Продукция завода (высокопротеиновый шрот, соевое гидратированное масло и соевое оболочка) имеет высокий стандарт качества и уже получила лучшие оценки потребителей - отечественных и зарубежных производителей продукции птицеводства, животноводства и рыбоводства.</p>
+
+    <div class="dropdown">
+        <button data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Выбор продукции<b class="caret"></b></button>
+        <?php
+        echo Dropdown::widget([
+            'items' => [
+                ['label' => 'Соя', 'url' => ['/site/soybeanprocessing', 'product' => 'soya']],
+                ['label' => 'Рапс', 'url' => ['/site/soybeanprocessing', 'product' => 'raps']],
+                ['label' => 'Подсолнечник', 'url' => ['/site/soybeanprocessing', 'product' => 'podsolnechnik']],
+            ],
+        ]);
+        ?>
+    </div>
+
+    <br>
+
+    <? echo $table;
+
+    echo GoogleChart::widget(array('visualization' => 'LineChart',
+        'data' => $value,
+        'options' => array('title' => 'Средняя цена')));
+    ?>
 
 
 </div>

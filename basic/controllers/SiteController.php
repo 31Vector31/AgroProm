@@ -12,6 +12,10 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use GuzzleHttp\Client; // подключаем Guzzle
+use yii\helpers\Url;
+use scotthuangzl\googlechart\GoogleChart;
+
 class SiteController extends Controller
 {
     /**
@@ -144,19 +148,133 @@ class SiteController extends Controller
         return $this->render('animalhusbandry');
     }
 
-    public function actionSoybeanprocessing()
+    public function actionSoybeanprocessing($product = "soya")
     {
-        return $this->render('soybeanprocessing');
+        // создаем экземпляр класса
+        $client = new Client();
+        // отправляем запрос к странице Яндекса
+
+        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
+        // получаем данные между открывающим и закрывающим тегами body
+        $body = $res->getBody();
+        // вывод страницы Яндекса в представление
+
+        $document = \phpQuery::newDocumentHTML($body);
+        // получаем список новостей
+
+        $table = $document->find("div.table-responsive");
+
+        //pq аналог $ в jQuery
+        $pq = pq($table);
+        // добавим свой класс к последней новости списка
+        $pq->find('table.tripoli')->addClass('table table-striped');
+
+        $tbody = $table->find("tbody");
+
+        $hue =[];
+
+        //pq аналог $ в jQuery
+        $pqq = $tbody;
+
+        $full = strip_tags($pqq->find('td'), "td");
+
+        $full = explode("\n", $full);
+
+        for ($i = 1; $i < count($full)-4; $i+=4) {
+            array_push($hue, $full[$i], intval($full[$i+1]));
+        }
+
+        $chunk=array_chunk($hue, 2);
+
+        array_unshift($chunk, array('Task', $product));
+
+        return $this->render('soybeanprocessing', ['value' => $chunk,'table' => $table]);
     }
 
-    public function actionCropproduction()
+    public function actionCropproduction($product = "kukuruza")
     {
-        return $this->render('cropproduction');
+        // создаем экземпляр класса
+        $client = new Client();
+        // отправляем запрос к странице Яндекса
+
+        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
+        // получаем данные между открывающим и закрывающим тегами body
+        $body = $res->getBody();
+        // вывод страницы Яндекса в представление
+
+        $document = \phpQuery::newDocumentHTML($body);
+        // получаем список новостей
+       
+        $table = $document->find("div.table-responsive");
+
+            //pq аналог $ в jQuery
+            $pq = pq($table);
+            // добавим свой класс к последней новости списка
+            $pq->find('table.tripoli')->addClass('table table-striped');
+
+        $tbody = $table->find("tbody");
+
+        $hue =[];
+
+            //pq аналог $ в jQuery
+            $pqq = $tbody;
+
+            $full = strip_tags($pqq->find('td'), "td");
+
+            $full = explode("\n", $full);
+
+            for ($i = 1; $i < count($full)-4; $i+=4) {
+                array_push($hue, $full[$i], intval($full[$i+1]));
+            }
+
+            $chunk=array_chunk($hue, 2);
+
+            array_unshift($chunk, array('Task', $product));
+
+        return $this->render('cropproduction', ['value' => $chunk,'table' => $table]);
     }
 
-    public function actionSugar()
+    public function actionSugar($product = "shrot-podsolnechnyy")
     {
-        return $this->render('sugar');
+        // создаем экземпляр класса
+        $client = new Client();
+        // отправляем запрос к странице Яндекса
+
+        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
+        // получаем данные между открывающим и закрывающим тегами body
+        $body = $res->getBody();
+        // вывод страницы Яндекса в представление
+
+        $document = \phpQuery::newDocumentHTML($body);
+        // получаем список новостей
+
+        $table = $document->find("div.table-responsive");
+
+        //pq аналог $ в jQuery
+        $pq = pq($table);
+        // добавим свой класс к последней новости списка
+        $pq->find('table.tripoli')->addClass('table table-striped');
+
+        $tbody = $table->find("tbody");
+
+        $hue =[];
+
+        //pq аналог $ в jQuery
+        $pqq = $tbody;
+
+        $full = strip_tags($pqq->find('td'), "td");
+
+        $full = explode("\n", $full);
+
+        for ($i = 1; $i < count($full)-4; $i+=4) {
+            array_push($hue, $full[$i], intval($full[$i+1]));
+        }
+
+        $chunk=array_chunk($hue, 2);
+
+        array_unshift($chunk, array('Task', $product));
+
+        return $this->render('sugar', ['value' => $chunk,'table' => $table]);
     }
 
     public function actionNews1()
