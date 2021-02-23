@@ -58,7 +58,6 @@ $this->title = 'Продукция растениеводства';
         'data' => $value,
         'options' => array('title' => 'Средняя цена')));
 
-
     ?>
 </div>
 

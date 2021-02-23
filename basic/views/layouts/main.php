@@ -64,7 +64,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Про компанию', 'url' => ['/site/about']],
             ['label' => 'Устойчивое развитие', 'url' => ['/site/sustainable_development']],
-            ['label' => 'Пресс-служба', 'url' => ['/site/press_service']],
+            ['label' => 'Новости', 'url' => ['/site/press_service']],
             ['label' => 'Продукция', 'url' => ['/site/clients']],
             ['label' => 'Поставщикам', 'url' => ['/site/suppliers']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],

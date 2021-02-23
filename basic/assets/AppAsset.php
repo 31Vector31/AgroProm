@@ -30,4 +30,5 @@ class AppAsset extends AssetBundle
         '\rmrevin\yii\fontawesome\AssetBundle',
         'yii\bootstrap4\BootstrapAsset',
     ];
+    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
 }
