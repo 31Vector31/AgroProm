@@ -28,24 +28,24 @@ $this->title = $obl;
 
     <p>71300, Г. Одесса, ул. Промышленная, 1.</p>
     <p>График работы филиала:
-        пн-сб с 8.00 до 20.00 (регистрация авто до 18.00).
+        <b>пн-сб с 8.00 до 20.00</b> (регистрация авто до 18.00).
         Воскресенье - выходной.</p>
     <p>Вниманию поставщиков! На филиалов не разгружаются автомобили, общий вес (брутто) которых превышает 60 тонн !!!</p>
 
-    <p>050-394-84-20, 095-278-23-17 - отдел закупок</p>
-    <p>0503944247 - торговый отдел</p>
-    <p>06138-2-16-11 - приемная</p>
-    <p>эл. почта - kamdnepr_torg@nibulon.com.ua</p>
+    <p><b>050-394-84-20, 095-278-23-17</b> - отдел закупок</p>
+    <p><b>0503944247</b> - торговый отдел</p>
+    <p><b>06138-2-16-11</b> - приемная</p>
+    <p>эл. почта - <b>kamdnepr_torg@agroprom.com.ua</b></p>
 
     <div class="dropdown">
-        <button data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Выбор продукции<b class="caret"></b></button>
+        <button data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Цены продукции<b class="caret"></b></button>
         <?php
         echo Dropdown::widget([
             'items' => [
-                ['label' => 'Кукуруза', 'url' => ['/site/filial', 'product' => 'kukuruza']],
-                ['label' => 'Пшеница 2 класс', 'url' => ['/site/filial', 'product' => 'pshenitsa-2-klass']],
-                ['label' => 'Пшеница 3 класс', 'url' => ['/site/filial', 'product' => 'pshenitsa-3-klass']],
-                ['label' => 'Ячмень', 'url' => ['/site/filial', 'product' => 'yachmen']],
+                ['label' => 'Кукуруза', 'url' => ['/site/filial', 'product' => 'kukuruza', 'obl' => $obl]],
+                ['label' => 'Пшеница 2 класс', 'url' => ['/site/filial', 'product' => 'pshenitsa-2-klass', 'obl' => $obl]],
+                ['label' => 'Пшеница 3 класс', 'url' => ['/site/filial', 'product' => 'pshenitsa-3-klass', 'obl' => $obl]],
+                ['label' => 'Ячмень', 'url' => ['/site/filial', 'product' => 'yachmen', 'obl' => $obl]],
             ],
         ]);
         ?>

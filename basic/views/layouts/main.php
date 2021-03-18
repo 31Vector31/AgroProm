@@ -17,7 +17,6 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,6 +43,10 @@ AppAsset::register($this);
         {
             color: #4e555b;
         }
+        body{
+            background-color:#faf9f8;
+        }
+
     </style>
 
 </head>
@@ -97,49 +100,71 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="bg-light text-center text-lg-start">
-    <!-- Grid container -->
+<!--<footer class="bg-light text-center text-lg-start">
+
     <div class="container p-4">
-        <!--Grid row-->
+
         <div class="row">
-            <!--Grid column-->
+
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h6 class="text-uppercase"><i class="fa fa-phone" aria-hidden="true"></i>  +38 (0512) 37-23-44</h6>
+                <h6 class="text-uppercase"><a href="tel:+380512372344"><i class="fa fa-phone" aria-hidden="true"></i>  +38 (0512) 37-23-44</a></h6>
 
 
             </div>
-            <!--Grid column-->
 
-            <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h6 class="text-uppercase mb-0"><i class="fa fa-map-marker" aria-hidden="true"></i> ул. Барицкого, 23, 45453, Одесса</h6>
+                <h6 class="text-uppercase mb-0"><a href="https://goo.gl/maps/juV9FbxcMCbb6vRd7"><i class="fa fa-map-marker" aria-hidden="true"></i> ул. Барицкого, 23, 45453, Одесса</a></h6>
 
 
             </div>
-            <!--Grid column-->
 
-            <!--Grid column-->
             <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                 <h6 class="text-uppercase"><a href="mailto:info@example.com"><i class="fa fa-envelope" aria-hidden="true"></i>  info@example.com</a></h6>
 
 
             </div>
-            <!--Grid column-->
+
 
         </div>
-        <!--Grid row-->
-    </div>
-    <!-- Grid container -->
 
-    <!-- Copyright -->
+    </div>
+
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © <?/*= date('Y') */?> Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">Server</a>
+        <a class="text-dark" href="https://server.odessa.ua">Server</a>
     </div>
-    <!-- Copyright -->
+
+</footer>-->
+
+<footer class="bg-light text-center">
+
+    <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="container text-center">
+
+            <div class="row text-center" style="padding-bottom: 11px; padding-top: 20px;">
+
+                <div class="col-lg-3 col-md-6">
+                    <a class="text-dark" href="https://server.odessa.ua"> © <?= date('Y') ?> Copyright: Server</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6><a href="tel:+380512372344"><i class="fa fa-phone" aria-hidden="true"></i>  +38 (0512) 37-23-44</a></h6>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6><a href="https://goo.gl/maps/juV9FbxcMCbb6vRd7"><i class="fa fa-map-marker" aria-hidden="true"></i> ул. Барицкого, 23, Одесса</a></h6>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6><a href="mailto:info@example.com"><i class="fa fa-envelope" aria-hidden="true"></i>  info@example.com</a></h6>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 </footer>
-
-
 
 
 

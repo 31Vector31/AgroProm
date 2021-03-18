@@ -229,9 +229,9 @@ class SiteController extends Controller
 
             $chunk=array_chunk($hue, 3);
 
-            array_unshift($chunk, array('Task', "AgroProm", $product));
+            array_unshift($chunk, array('Task', "AgroProm", "Остальные"));
 
-        return $this->render('cropproduction', ['value' => $chunk,'table' => $table]);
+        return $this->render('cropproduction', ['value' => $chunk,'table' => $table,'title' => $product]);
     }
 
     public function actionSugar($product = "shrot-podsolnechnyy")
@@ -284,6 +284,13 @@ class SiteController extends Controller
 
     public function actionFilial($obl="Odessa",$product = "kukuruza")
     {
+        if(Yii::$app->request->isAjax){
+            /*return 'Ответ на запрос';*/
+            $obl=Yii::$app->request->post('obl');
+
+        return $this->renderAjax('filial', ['obl' => $obl]);
+        }
+
         // создаем экземпляр класса
         $client = new Client();
         // отправляем запрос к странице Яндекса

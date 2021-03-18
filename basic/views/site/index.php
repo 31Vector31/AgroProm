@@ -10,10 +10,6 @@ $this->title = 'AgroProm';
 
 <style>
 
-    * {
-        /*box-sizing: border-box;*/
-    }
-
     .slider {
         width: 95%;
         margin: 0px auto;
@@ -59,12 +55,25 @@ $this->title = 'AgroProm';
     }
     .hue{
         width: 350px;
-        height: 520px;
+        height: 440px;
 
         padding: 15px;
         margin: 10px;
+        margin-bottom: 20px;
+        margin-top: 0px;
         position:relative;
+        /*border: 1px solid grey;*/
+
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        border:#d3d3d3 solid 1px;
+        background: #fff;
+        color: black;
+        font-size: smaller;
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
     .hell{
         position:absolute;
         width: 90%;
@@ -85,48 +94,62 @@ $this->title = 'AgroProm';
 
 <div class="site-index" style="width: 100%;">
 
-
-
     <section class="regular slider">
         <div>
-        <div style="background-image: url('https://i.ibb.co/qgd2Chc/pole2.jpg');" class="image">
+        <div style="background-image: url(images/indexslider1.jpg)" class="image">
             <div>
-                <h1>Продукция лучшего качества</h1>
+                <h1>Холдинг новых возможностей</h1>
 
-                <h5>Мы производим продукцию наивысшего качества для самых прихотливых <br> украинских и мировых потребителей</h5>
+                <span>Мы строим высокотехнологичную инновационную компанию в Украине </span>
+                <br><span>с узнаваемым во всем мире брендом и безупречной репутацией, </span>
+                <br><span>привлекательную для акционеров и партнеров и предоставляем </span>
+                <br><span>возможность эффективной самореализации каждому своему сотруднику.</span>
             </div>
         </div>
         </div>
 
         <div>
-            <div style="background-image: url('https://astartaholding.com/images/uploads/472b1157d1df216f16a80957cd98b1cc.jpg');" class="image">
+            <div style="background-image: url(images/index2.jpg)" class="image">
 
                 <div>
                     <h1>Продукция лучшего качества</h1>
 
-                    <h5>Мы производим продукцию наивысшего качества для самых прихотливых <br> украинских и мировых потребителей</h5>
+                    <span>Мы производим продукцию наивысшего качества для самых прихотливых
+                        <br> украинских и мировых потребителей</span>
                 </div>
 
             </div>
         </div>
 
         <div>
-            <div style="background-image: url('https://i.ibb.co/qgd2Chc/pole2.jpg');" class="image">
+            <div style="background-image: url(images/index4.jpg)" class="image">
                 <div>
-                    <h1>Продукция лучшего качества</h1>
+                    <h1>Инвестиции в будущее</h1>
 
-                    <h5>Мы производим продукцию наивысшего качества для самых прихотливых <br> украинских и мировых потребителей</h5>
+                    <span>Наше предназначение - построить сильную Украину
+                        <br>и укрепить доверие к ней в мире, раскрывая
+                        <br>и приумножая потенциал украинской земли и людей
+                        <br>и вдохновляя общество своим примером ведения бизнеса.</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div style="background-image: url(images/index3.jpg)" class="image">
+                <div>
+                    <h1>Социально-ответственный бизнес</h1>
+
+                    <span>Мы опираемся в своей работе на ценности безупречной деловой репутации,
+                        <br>социальной ответственности, уважения к достоинству человека
+                        <br>и эффективного партнерства.</span>
                 </div>
             </div>
         </div>
     </section>
-
     <br>
-
-
         <div class="container-fluid">
             <div class="row justify-content-center" >
-                <div style="border: 1px solid grey; " class="xs-12 hue">
+                <div class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/mc/8733.jpg" alt="" class="w-100">
 
@@ -148,7 +171,7 @@ $this->title = 'AgroProm';
 
 
 
-                <div style="border: 1px solid grey;" class="xs-12 hue">
+                <div class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/mc/8731.jpg" alt="" class="w-100">
 
@@ -170,7 +193,7 @@ $this->title = 'AgroProm';
 
 
 
-                <div style=" border: 1px solid grey;" class="xs-12 hue">
+                <div class="xs-12 hue">
 
                     <img style="" width="300px" height="200px" src="https://nibulon.com/thumb/g/6033/23266.jpg" alt="" class="w-100">
 

@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Пресс-служба';
+$this->title = 'Новости';
 
 
 ?>
