@@ -78,12 +78,17 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            /*return $this->goHome();*/
+            return $this->redirect('analysis');
+            /*return $this->actionClients();*/
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            /*return $this->goBack();*/
+            /*return $this->render('analysis');*/
+            /*return $this->actionClients();*/
+            return $this->redirect('analysis');
         }
 
         $model->password = '';
@@ -129,18 +134,12 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-
         return $this->render('about');
-
-       /* return $this->render('about');*/
     }
 
     public function actionClients()
     {
-
         return $this->render('clients');
-
-        /* return $this->render('about');*/
     }
 
     public function actionAnimalhusbandry()
@@ -148,73 +147,56 @@ class SiteController extends Controller
         return $this->render('animalhusbandry');
     }
 
-    public function actionSoybeanprocessing($product = "soya")
+    public function actionSoybeanprocessing()
     {
-        // создаем экземпляр класса
-        $client = new Client();
-        // отправляем запрос к странице Яндекса
-
-        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
-        // получаем данные между открывающим и закрывающим тегами body
-        $body = $res->getBody();
-        // вывод страницы Яндекса в представление
-
-        $document = \phpQuery::newDocumentHTML($body);
-        // получаем список новостей
-
-        $table = $document->find("div.table-responsive");
-
-        //pq аналог $ в jQuery
-        $pq = pq($table);
-        // добавим свой класс к последней новости списка
-        $pq->find('table.tripoli')->addClass('table table-striped');
-
-        $tbody = $table->find("tbody");
-
-        $hue =[];
-
-        //pq аналог $ в jQuery
-        $pqq = $tbody;
-
-        $full = strip_tags($pqq->find('td'), "td");
-
-        $full = explode("\n", $full);
-
-        for ($i = 1; $i < count($full)-4; $i+=4) {
-            array_push($hue, $full[$i], intval($full[$i+1]));
-        }
-
-        $chunk=array_chunk($hue, 2);
-
-        array_unshift($chunk, array('Task', $product));
-
-        return $this->render('soybeanprocessing', ['value' => $chunk,'table' => $table]);
+        return $this->render('soybeanprocessing');
     }
 
-    public function actionCropproduction($product = "kukuruza")
+    public function actionCropproduction()
     {
-        // создаем экземпляр класса
-        $client = new Client();
-        // отправляем запрос к странице Яндекса
+        return $this->render('cropproduction');
+    }
 
-        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
-        // получаем данные между открывающим и закрывающим тегами body
-        $body = $res->getBody();
-        // вывод страницы Яндекса в представление
+    public function actionSugar()
+    {
+        return $this->render('sugar');
+    }
 
-        $document = \phpQuery::newDocumentHTML($body);
-        // получаем список новостей
-       
-        $table = $document->find("div.table-responsive");
+    public function actionNews1()
+    {
+        return $this->render('news1');
+    }
+
+    public function actionFilial()
+    {
+        if(Yii::$app->request->isAjax){
+            /*return 'Ответ на запрос';*/
+
+            $obl=Yii::$app->request->get('obl');
+            $product=Yii::$app->request->get('product');
+
+            // создаем экземпляр класса
+            $client = new Client();
+            // отправляем запрос к странице Яндекса
+
+            $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
+            // получаем данные между открывающим и закрывающим тегами body
+            $body = $res->getBody();
+            // вывод страницы Яндекса в представление
+
+            $document = \phpQuery::newDocumentHTML($body);
+            // получаем список новостей
+
+            $table = $document->find("div.table-responsive");
 
             //pq аналог $ в jQuery
             $pq = pq($table);
             // добавим свой класс к последней новости списка
             $pq->find('table.tripoli')->addClass('table table-striped');
 
-        $tbody = $table->find("tbody");
+            $tbody = $table->find("tbody");
 
-        $hue =[];
+            $hue =[];
 
             //pq аналог $ в jQuery
             $pqq = $tbody;
@@ -224,137 +206,87 @@ class SiteController extends Controller
             $full = explode("\n", $full);
 
             for ($i = 1; $i < count($full)-4; $i+=4) {
-                array_push($hue, $full[$i], intval($full[$i+1]), intval($full[$i+1])+100);
+                array_push($hue, $full[$i], intval($full[$i+1]));
             }
 
-            $chunk=array_chunk($hue, 3);
+            $chunk=array_chunk($hue, 2);
 
-            array_unshift($chunk, array('Task', "AgroProm", "Остальные"));
+            array_unshift($chunk, array('Task', $product));
 
-        return $this->render('cropproduction', ['value' => $chunk,'table' => $table,'title' => $product]);
-    }
-
-    public function actionSugar($product = "shrot-podsolnechnyy")
-    {
-        // создаем экземпляр класса
-        $client = new Client();
-        // отправляем запрос к странице Яндекса
-
-        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
-        // получаем данные между открывающим и закрывающим тегами body
-        $body = $res->getBody();
-        // вывод страницы Яндекса в представление
-
-        $document = \phpQuery::newDocumentHTML($body);
-        // получаем список новостей
-
-        $table = $document->find("div.table-responsive");
-
-        //pq аналог $ в jQuery
-        $pq = pq($table);
-        // добавим свой класс к последней новости списка
-        $pq->find('table.tripoli')->addClass('table table-striped');
-
-        $tbody = $table->find("tbody");
-
-        $hue =[];
-
-        //pq аналог $ в jQuery
-        $pqq = $tbody;
-
-        $full = strip_tags($pqq->find('td'), "td");
-
-        $full = explode("\n", $full);
-
-        for ($i = 1; $i < count($full)-4; $i+=4) {
-            array_push($hue, $full[$i], intval($full[$i+1]));
+            return $this->renderAjax('filial', ['obl' => $obl,'value' => $chunk]);
         }
 
-        $chunk=array_chunk($hue, 2);
 
-        array_unshift($chunk, array('Task', $product));
-
-        return $this->render('sugar', ['value' => $chunk,'table' => $table]);
+        /*return $this->render('filial', ['obl' => $obl,'value' => $chunk]);*/
     }
 
-    public function actionNews1()
-    {
-        return $this->render('news1');
-    }
-
-    public function actionFilial($obl="Odessa",$product = "kukuruza")
+    public function actionProduct()
     {
         if(Yii::$app->request->isAjax){
-            /*return 'Ответ на запрос';*/
-            $obl=Yii::$app->request->post('obl');
-
-        return $this->renderAjax('filial', ['obl' => $obl]);
+            // создаем экземпляр класса
+            $product=Yii::$app->request->get('product');
+            $client = new Client();
+            // отправляем запрос к странице Яндекса
+            $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
+            // получаем данные между открывающим и закрывающим тегами body
+            $body = $res->getBody();
+            // вывод страницы Яндекса в представление
+            $document = \phpQuery::newDocumentHTML($body);
+            // получаем список новостей
+            $table = $document->find("div.table-responsive");
+            //pq аналог $ в jQuery
+            $pq = pq($table);
+            // добавим свой класс к последней новости списка
+            $pq->find('table.tripoli')->addClass('table table-striped');
+            $tbody = $table->find("tbody");
+            $hue =[];
+            //pq аналог $ в jQuery
+            $pqq = $tbody;
+            $full = strip_tags($pqq->find('td'), "td");
+            $full = explode("\n", $full);
+            for ($i = 1; $i < count($full)-4; $i+=4) {
+                array_push($hue, $full[$i], intval($full[$i+1]), intval($full[$i+1])+100);
+            }
+            $chunk=array_chunk($hue, 3);
+            array_unshift($chunk, array('Task', "AgroProm", "Остальные"));
+            return $this->renderAjax('product', ['value' => $chunk,'table' => $table]);
         }
-
-        // создаем экземпляр класса
-        $client = new Client();
-        // отправляем запрос к странице Яндекса
-
-        $res = $client->request('GET', 'https://tripoli.land/analytics/'.$product);
-        // получаем данные между открывающим и закрывающим тегами body
-        $body = $res->getBody();
-        // вывод страницы Яндекса в представление
-
-        $document = \phpQuery::newDocumentHTML($body);
-        // получаем список новостей
-
-        $table = $document->find("div.table-responsive");
-
-        //pq аналог $ в jQuery
-        $pq = pq($table);
-        // добавим свой класс к последней новости списка
-        $pq->find('table.tripoli')->addClass('table table-striped');
-
-        $tbody = $table->find("tbody");
-
-        $hue =[];
-
-        //pq аналог $ в jQuery
-        $pqq = $tbody;
-
-        $full = strip_tags($pqq->find('td'), "td");
-
-        $full = explode("\n", $full);
-
-        for ($i = 1; $i < count($full)-4; $i+=4) {
-            array_push($hue, $full[$i], intval($full[$i+1]));
-        }
-
-        $chunk=array_chunk($hue, 2);
-
-        array_unshift($chunk, array('Task', $product));
-
-        return $this->render('filial', ['obl' => $obl,'value' => $chunk,'table' => $table]);
     }
 
     public function actionPress_service()
     {
-
         return $this->render('press_service');
-
-        /* return $this->render('about');*/
     }
 
     public function actionSuppliers()
     {
-
         return $this->render('suppliers');
-
-        /* return $this->render('about');*/
     }
 
     public function actionSustainable_development()
     {
-
         return $this->render('sustainable_development');
-
-        /* return $this->render('about');*/
     }
+
+    public function actionAnalysis()
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect('login');
+        }
+
+        return $this->render('analysis');
+    }
+
+    /*public function actionAnalysis_content()
+    {
+        if(Yii::$app->request->isAjax){
+            // создаем экземпляр класса
+            $request=Yii::$app->request->get('request');
+
+            if($request=="costs")
+            return $this->renderAjax($request);
+        }
+    }*/
 
     public function actionSignup(){
         if (!Yii::$app->user->isGuest) {

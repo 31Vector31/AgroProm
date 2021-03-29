@@ -14,13 +14,154 @@ $this->title = 'Продукция переработки сои';
 
 
 <style>
-    .site-animalhusbandry{
-
-    }
 
     p {
         text-indent: 20px; /* Отступ первой строки в пикселах */
         font-weight: 300;
+    }
+
+    .rule {
+        margin: 10px 0;
+        border: none;
+        height: 1.5px;
+        background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+    }
+
+    /* ===== Select Box ===== */
+    .sel {
+        font-size: 1rem;
+        display: inline-block;
+        /*margin: 3em 2em;*/
+        width: 370px;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .sel::before {
+        position: absolute;
+        content: '\f063';
+        font-family: 'FontAwesome';
+        font-size: 2em;
+        color: #FFF;
+        right: 20px;
+        top: calc(50% - 0.5em);
+    }
+
+    .sel.active::before {
+        transform: rotateX(-180deg);
+    }
+
+    .sel__placeholder {
+        display: block;
+        font-family: 'Quicksand';
+        font-size: 2.3em;
+        color: #838e95;
+        padding: 0.2em 0.5em;
+        text-align: left;
+        pointer-events: none;
+        user-select: none;
+        visibility: visible;
+    }
+
+    .sel.active .sel__placeholder {
+        visibility: hidden;
+    }
+
+    .sel__placeholder::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.2em 0.5em;
+        content: attr(data-placeholder);
+        visibility: hidden;
+    }
+
+    .sel.active .sel__placeholder::before {
+        visibility: visible;
+    }
+
+    .sel__box {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: -4px;
+        display: none;
+        list-style-type: none;
+        text-align: left;
+        font-size: 1em;
+        background-color: #FFF;
+        width: calc(100% + 8px);
+        box-sizing: border-box;
+    }
+
+    .sel.active .sel__box {
+        display: block;
+        animation: fadeInUp 500ms;
+    }
+
+    .sel__box__options {
+        display: list-item;
+        font-family: 'Quicksand';
+        font-size: 1.5em;
+        color: #838e95;
+        padding: 0.5em 1em;
+        user-select: none;
+    }
+
+    .sel__box__options::after {
+        content: '\f00c';
+        font-family: 'FontAwesome';
+        font-size: 0.5em;
+        margin-left: 5px;
+        display: none;
+    }
+
+    .sel__box__options.selected::after {
+        display: inline;
+    }
+
+    .sel__box__options:hover {
+        background-color: #ebedef;
+    }
+
+    /* ----- Select Box Black Panther ----- */
+    .sel {
+        border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .sel--black-panther {
+        z-index: 3;
+    }
+
+    /* ----- Select Box Superman ----- */
+    .sel--superman {
+        /*   display: none; */
+        z-index: 2;
+    }
+
+    /* ===== Keyframes ===== */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
     }
 
 </style>
@@ -34,31 +175,144 @@ $this->title = 'Продукция переработки сои';
     <p>Интегрированный комплекс по переработке сои находится в пгт. Глобино (Полтавская область). Проектная перерабатывающая мощность предприятия - 700 тонн сои в день или 220 000 тонн в год. За год завод производит 160 000 тонн высокопротеиновый шрота, 40 000 тонн соевого масла и 9000 тонн гранулированной оболочки. В состав комплекса также входят мощности по хранению готовой продукции и элеватор емкостью 42 000 тонн, а также необходимые инженерные, автомобильные и железнодорожные коммуникации.
     На предприятии установлено оборудование ведущих производителей, которое сертифицировано в соответствии с международными стандартами. Кроме того, на предприятии предусмотрены мощные системы очистки воды и воздуха.</p>
     <p>В начале 2016 Глобинский завод переработки сои успешно прошел комплексную сертификацию по международным стандартам ISO 9001, ISO 14001, OHSAS 18001 и схемой сертификации FSSC 22000 для пищевой и кормовой продукции. В 2017 году прошла сертификация завода по международному стандарту ISO 50001 по энергетическому менеджменту, а в 2018 году сертификация по стандарту по безопасности кормов GMP + B2.</p>
-    <p>Продукция завода (высокопротеиновый шрот, соевое гидратированное масло и соевое оболочка) имеет высокий стандарт качества и уже получила лучшие оценки потребителей - отечественных и зарубежных производителей продукции птицеводства, животноводства и рыбоводства.</p>
+    <p style="margin-bottom: 0">Продукция завода (высокопротеиновый шрот, соевое гидратированное масло и соевое оболочка) имеет высокий стандарт качества и уже получила лучшие оценки потребителей - отечественных и зарубежных производителей продукции птицеводства, животноводства и рыбоводства.</p>
 
-    <div class="dropdown">
+    <div class="sel sel--black-panther">
+        <select name="select-profession" id="select-profession">
+            <option value="" disabled>Выбор продукции</option>
+            <option value="soya">Соя</option>
+            <option value="raps">Рапс</option>
+            <option value="podsolnechnik">Подсолнечник</option>
+        </select>
+    </div>
+
+    <br><br>
+    <div id="hue">
+        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+   <!-- <div class="dropdown">
         <button data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Выбор продукции<b class="caret"></b></button>
         <?php
-        echo Dropdown::widget([
+/*        echo Dropdown::widget([
             'items' => [
                 ['label' => 'Соя', 'url' => ['/site/soybeanprocessing', 'product' => 'soya']],
                 ['label' => 'Рапс', 'url' => ['/site/soybeanprocessing', 'product' => 'raps']],
                 ['label' => 'Подсолнечник', 'url' => ['/site/soybeanprocessing', 'product' => 'podsolnechnik']],
             ],
         ]);
-        ?>
+        */?>
     </div>
 
     <br>
 
-    <? echo $table;
+    --><?/* echo $table;
 
     echo GoogleChart::widget(array('visualization' => 'LineChart',
         'data' => $value,
         'options' => array('title' => 'Средняя цена')));
-    ?>
+    */?>
 
 
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready ( function(){
+        $.ajax({
+            url: '/site/product',
+            type: 'GET',
+            data: {'product': "soya"},
+            success: function(res){
+                $('#hue').html(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+
+        $.ajax({
+            url: '/site/product',
+            type: 'GET',
+            data: {'product': "soya"},
+            success: function(res){
+                $('#hue').html(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    });
+
+    /* ===== Logic for creating fake Select Boxes ===== */
+    $('.sel').each(function() {
+        $(this).children('select').css('display', 'none');
+
+        var $current = $(this);
+
+        $(this).find('option').each(function(i) {
+            if (i == 0) {
+                $current.prepend($('<div>', {
+                    class: $current.attr('class').replace(/sel/g, 'sel__box')
+                }));
+
+                var placeholder = $(this).text();
+                $current.prepend($('<span>', {
+                    class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+                    text: placeholder,
+                    'data-placeholder': placeholder
+                }));
+
+                return;
+            }
+
+            $current.children('div').append($('<span>', {
+                class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+                text: $(this).text(),
+            }));
+
+            $(".sel__box__options").first().addClass("selected");
+            $(".sel__placeholder").text('Соя');
+        });
+    });
+
+    // Toggling the `.active` state on the `.sel`.
+    $('.sel').click(function() {
+        $(this).toggleClass('active');
+
+    });
+
+    // Toggling the `.selected` state on the options.
+    $('.sel__box__options').click(function() {
+
+        var txt = $(this).text();
+        var index = $(this).index();
+
+        if(index===0) product = "soya";
+        if(index===1) product = "raps";
+        if(index===2) product = "podsolnechnik";
+
+        $.ajax({
+            url: '/site/product',
+            type: 'GET',
+            data: {'product': product},
+            success: function(res){
+                $('#hue').html(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+
+        $(this).siblings('.sel__box__options').removeClass('selected');
+        $(this).addClass('selected');
+
+        var $currentSel = $(this).closest('.sel');
+        $currentSel.children('.sel__placeholder').text(txt);
+        $currentSel.children('select').prop('selectedIndex', index + 1);
+    });
+
+
+</script>
 
 

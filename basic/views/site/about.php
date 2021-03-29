@@ -172,6 +172,154 @@ $this->title = 'Про компанию';
         pointer-events:none;
         box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
+    p {
+        text-indent: 20px; /* Отступ первой строки в пикселах */
+        font-weight: 300;
+    }
+
+    .rule {
+        margin: 10px 0;
+        border: none;
+        height: 1.5px;
+        background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+    }
+
+    .sel {
+        font-size: 0.8rem;
+        display: inline-block;
+        margin: 20px;
+        width: 450px;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .sel::before {
+        position: absolute;
+        content: '\f063';
+        font-family: 'FontAwesome';
+        font-size: 2em;
+        color: #FFF;
+        right: 20px;
+        top: calc(50% - 0.5em);
+    }
+
+    .sel.active::before {
+        transform: rotateX(-180deg);
+    }
+
+    .sel__placeholder {
+        display: block;
+        font-family: 'Quicksand';
+        font-size: 2.3em;
+        color: #838e95;
+        padding: 0.2em 0.5em;
+        text-align: left;
+        pointer-events: none;
+        user-select: none;
+        visibility: visible;
+    }
+
+    .sel.active .sel__placeholder {
+        visibility: hidden;
+    }
+
+    .sel__placeholder::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.2em 0.5em;
+        content: attr(data-placeholder);
+        visibility: hidden;
+    }
+
+    .sel.active .sel__placeholder::before {
+        visibility: visible;
+    }
+
+    .sel__box {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: -4px;
+        display: none;
+        list-style-type: none;
+        text-align: left;
+        font-size: 1em;
+        background-color: #FFF;
+        width: calc(100% + 8px);
+        box-sizing: border-box;
+    }
+
+    .sel.active .sel__box {
+        display: block;
+        animation: fadeInUp 500ms;
+    }
+
+    .sel__box__options {
+        display: list-item;
+        font-family: 'Quicksand';
+        font-size: 1.5em;
+        color: #838e95;
+        padding: 0.5em 1em;
+        user-select: none;
+    }
+
+    .sel__box__options::after {
+        content: '\f00c';
+        font-family: 'FontAwesome';
+        font-size: 0.5em;
+        margin-left: 5px;
+        display: none;
+    }
+
+    .sel__box__options.selected::after {
+        display: inline;
+    }
+
+    .sel__box__options:hover {
+        background-color: #ebedef;
+    }
+
+
+    .sel {
+        border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .sel--black-panther {
+        z-index: 3;
+    }
+
+
+    .sel--superman {
+        /*   display: none; */
+        z-index: 2;
+    }
+
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
 </style>
 
 
@@ -270,6 +418,7 @@ $this->title = 'Про компанию';
    <!--<div id="map" style="width: 100%; height: 893px;"></div>-->
 
     <div id="hue"></div>
+
 </div>
 
 
@@ -277,77 +426,9 @@ $this->title = 'Про компанию';
 <!--<script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/ukraineLow.js"></script>-->
 <script type="text/javascript">
-    /*AmCharts.makeChart("map",{
-        "type": "map",
-        "pathToImages": "http://www.amcharts.com/lib/3/images/",
-        "addClassNames": true,
-        "fontSize": 15,
-        "color": "#FFFFFF",
-        "projection": "mercator",
-        "backgroundAlpha": 1,
-        "backgroundColor": "#faf9f8",
-        "dataProvider": {
-            "map": "ukraineLow",
-            "getAreasFromMap": true,
-        },
-        "balloon": {
-            "horizontalPadding": 15,
-            "borderAlpha": 0,
-            "borderThickness": 1,
-            "verticalPadding": 15
-        },
-        "areasSettings": {
-            "color": "rgba(129,129,129,1)",
-            "outlineColor": "rgba(80,80,80,1)",
-            "rollOverOutlineColor": "rgba(80,80,80,1)",
-            "rollOverBrightness": 20,
-            "selectedBrightness": 20,
-            "selectable": true,
-            "unlistedAreasAlpha": 0,
-            "unlistedAreasOutlineAlpha": 0
-        },
-        "imagesSettings": {
-            "alpha": 1,
-            "color": "rgba(129,129,129,1)",
-            "outlineAlpha": 0,
-            "rollOverOutlineAlpha": 0,
-            "outlineColor": "rgba(80,80,80,1)",
-            "rollOverBrightness": 20,
-            "selectedBrightness": 20,
-            "selectable": true
-        },
-        "linesSettings": {
-            "color": "rgba(129,129,129,1)",
-            "selectable": true,
-            "rollOverBrightness": 20,
-            "selectedBrightness": 20
-        },
-        "zoomControl": {
-            "zoomControlEnabled": true,
-            "homeButtonEnabled": false,
-            "panControlEnabled": false,
-            "right": 38,
-            "bottom": 30,
-            "minZoomLevel": 0.25,
-            "gridHeight": 100,
-            "gridAlpha": 0.1,
-            "gridBackgroundAlpha": 0,
-            "gridColor": "#FFFFFF",
-            "draggerAlpha": 1,
-            "buttonCornerRadius": 2
-        }
-    });*/
-
-
-    /*$(document).ready(function(){
-        $('body').on('click', '.amcharts-map-area', function(){
-            alert(this.getAttribute("aria-label"));
-        });
-    });*/
-
 
     var tooltip = document.querySelector('.map-tooltip');
-
+    var k = 0;
     // iterate throw all `path` tags
     [].forEach.call(document.querySelectorAll('path.amcharts-map-area'), function(item) {
         // attach click event, you can read the URL from a attribute for example.
@@ -356,11 +437,12 @@ $this->title = 'Про компанию';
             /*window.open('');*/
             <?/*=Yii::$app->urlManager->createUrl("site/filial")*/?>
 
+            document.title = obl;
 
             $.ajax({
                 url: '/site/filial',
-                type: 'POST',
-                data: {'obl': obl},
+                type: 'GET',
+                data: {'obl': obl, 'product': "kukuruza"},
                 success: function(res){
                     console.log(res);
                     $('#hue').html(res);
@@ -369,6 +451,21 @@ $this->title = 'Про компанию';
                     alert('Error!');
                 }
             });
+if(k==0) {
+    $.ajax({
+        url: '/site/filial',
+        type: 'GET',
+        data: {'obl': obl, 'product': "kukuruza"},
+        success: function (res) {
+            console.log(res);
+            $('#hue').html(res);
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+    k++;
+}
 
         });
 
